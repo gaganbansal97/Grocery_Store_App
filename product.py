@@ -6,7 +6,6 @@ def getallproducts(connection):
         'SELECT product_id, product_name, uom ,uom.uom_name , product_price FROM products INNER JOIN uom ON '
         'uom.uom_id=products.uom')
     cursor.execute(query)
-
     # This will store all the product details
     response = []
 
@@ -57,17 +56,6 @@ def get_product(connection, id):
             'product_price': product_price
         })
     return response
-
-
-
-
-def edit_product(connection, product):
-    cursor = connection.cursor()
-    query = "UPDATE products set product_name = %s , uom = %s, product_price = %s where product_id= %s"
-    cursor.execute(query, (product['product_name'], product['uom_id'], product['product_price'], product['product_id']))
-    connection.commit()
-    #print('Success')
-    return
 
 
 if __name__ == '__main__':

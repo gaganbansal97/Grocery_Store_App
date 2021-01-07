@@ -66,23 +66,15 @@ def get_orders():
     return response
 
 
-@app.route('/getParticularProduct', methods=['GET'])
-def get_products():
-    products = product.get_product(connection, )
-    response = jsonify(products)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
-
-
-@app.route('/editProduct', methods=['POST'])
-def edit_product():
-    request_payload = json.loads(request.form['data'])
-    product_id = product.edit_product(connection, request_payload)
-    response = jsonify({
-        'product_id': product_id
-    })
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
+# @app.route('/editProduct', methods=['POST'])
+# def edit_product():
+#     request_payload = json.loads(request.form['data'])
+#     product_id = product.edit_product(connection, request_payload)
+#     response = jsonify({
+#         'product_id': product_id
+#     })
+#     response.headers.add('Access-Control-Allow-Origin', '*')
+#     return response
 
 
 if __name__ == "__main__":
